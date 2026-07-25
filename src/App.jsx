@@ -30,7 +30,9 @@ import {
   Activity,
   ArrowLeft,
   PieChart,
-  Repeat
+  Repeat,
+  Sun,
+  Moon
 } from 'lucide-react';
 import SystemPages from './SystemPages';
 import './App.css';
@@ -50,6 +52,18 @@ const staggerContainer = {
 
 function App() {
   const { scrollY } = useScroll();
+
+  // Day / night mode — remembered between visits, defaults to the OS preference
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('nz-theme');
+    if (saved) return saved;
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('nz-theme', theme);
+  }, [theme]);
   
   // Parallax effects for backgrounds
   const yExterior = useTransform(scrollY, [0, 1000], [0, 300]);
@@ -58,7 +72,17 @@ function App() {
 
   return (
     <div className="app-wrapper">
-      
+
+      <button
+        type="button"
+        className="theme-toggle"
+        onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+        aria-label={theme === 'dark' ? 'تفعيل الوضع النهاري' : 'تفعيل الوضع الليلي'}
+      >
+        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        <span>{theme === 'dark' ? 'الوضع النهاري' : 'الوضع الليلي'}</span>
+      </button>
+
       {/* Hero Section - Hotel Exterior */}
       <section className="parallax-section" id="hero-section">
         <motion.div 

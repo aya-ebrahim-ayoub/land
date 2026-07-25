@@ -1,18 +1,27 @@
 :root {
-  /* Colors */
+  /* Colors — dark (default) */
   --color-bg-primary: #040d1a;
   --color-bg-secondary: #0a1930;
+  --color-surface-deep: #02060c;
+  --color-surface-alt: #020813;
+  --color-surface-3: #071527;
   --color-primary: #1e6ff6; /* Bright Blue */
   --color-primary-hover: #1558d6;
   --color-text-main: #ffffff;
   --color-text-muted: #9ba6b5;
   --color-accent: #00d2ff; /* Light Cyan/Blue for accents */
-  
+
+  /* Overlay inks: every translucent surface/shadow is built from these,
+     so flipping them switches the whole theme. */
+  --ink: 255, 255, 255;
+  --shade: 0, 0, 0;
+  --hero-overlay: rgba(4, 13, 26, 0.85);
+
   /* Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  
+  --glass-bg: rgba(var(--ink), 0.03);
+  --glass-border: rgba(var(--ink), 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(var(--shade), 0.37);
+
   /* Radii */
   --radius-sm: 8px;
   --radius-md: 16px;
@@ -21,6 +30,158 @@
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
+}
+
+/* --- Light (day) theme --- */
+:root[data-theme='light'] {
+  --color-bg-primary: #e4ebf5;
+  --color-bg-secondary: #ffffff;
+  --color-surface-deep: #dbe4f1;
+  --color-surface-alt: #e7edf7;
+  --color-surface-3: #d3e0f2;
+  --color-text-main: #05101d;
+  --color-text-muted: #1a2938;
+  --color-primary: #0f4fc4;
+  --color-primary-hover: #0b3d9c;
+  --color-accent: #0b7f9c;
+
+  --ink: 8, 26, 52;
+  --shade: 18, 44, 80;
+  --hero-overlay: rgba(6, 18, 34, 0.6); /* hero keeps its photo, text stays white */
+}
+
+/* Cards read as white panels lifted off the tinted page, not tinted-on-tinted */
+:root[data-theme='light'] .feature-card,
+:root[data-theme='light'] .timeline-content,
+:root[data-theme='light'] .pp-stage-card,
+:root[data-theme='light'] .pp-aud-card,
+:root[data-theme='light'] .pp-spec-row,
+:root[data-theme='light'] .ms-presence-item,
+:root[data-theme='light'] .ms-card,
+:root[data-theme='light'] .ms-metric,
+:root[data-theme='light'] .footer-panel,
+:root[data-theme='light'] .sp-stats-strip,
+:root[data-theme='light'] .sp-row-list li,
+:root[data-theme='light'] .why-us-row {
+  background: #ffffff;
+  border-color: rgba(var(--ink), 0.12);
+  box-shadow: 0 6px 20px rgba(var(--shade), 0.08);
+}
+
+:root[data-theme='light'] .feature-card:hover,
+:root[data-theme='light'] .timeline-content:hover,
+:root[data-theme='light'] .sp-row-list li:hover,
+:root[data-theme='light'] .why-us-row:hover {
+  background: #ffffff;
+  border-color: rgba(var(--ink), 0.2);
+  box-shadow: 0 12px 30px rgba(var(--shade), 0.14);
+}
+
+/* Body copy needs real weight on a light page */
+:root[data-theme='light'] p,
+:root[data-theme='light'] li,
+:root[data-theme='light'] .section-subtitle,
+:root[data-theme='light'] .text-muted,
+:root[data-theme='light'] .why-us-text,
+:root[data-theme='light'] .sp-row-desc,
+:root[data-theme='light'] .sp-stat-label,
+:root[data-theme='light'] .sp-row-list li,
+:root[data-theme='light'] .footer-about,
+:root[data-theme='light'] .footer-contact-value,
+:root[data-theme='light'] .footer-contact-row,
+:root[data-theme='light'] .pp-head-text p,
+:root[data-theme='light'] .pp-spec-label,
+:root[data-theme='light'] .pp-spec-value,
+:root[data-theme='light'] .ms-metric-label,
+:root[data-theme='light'] .timeline-content p {
+  color: #13212f;
+}
+
+:root[data-theme='light'] .footer-badges-label,
+:root[data-theme='light'] .sp-browser .sp-url {
+  color: #3a4a5e;
+}
+
+:root[data-theme='light'] h1,
+:root[data-theme='light'] h2,
+:root[data-theme='light'] h3,
+:root[data-theme='light'] h4,
+:root[data-theme='light'] h5 {
+  color: #05101d;
+}
+
+/* Floating badges over the mockup: solid card, dark text */
+:root[data-theme='light'] .mockup-badge {
+  background: #ffffff;
+  border-color: rgba(var(--ink), 0.14);
+  box-shadow: 0 14px 34px rgba(var(--shade), 0.22);
+}
+
+:root[data-theme='light'] .mockup-badge-text strong,
+:root[data-theme='light'] .mockup-badge-side {
+  color: #05101d;
+}
+
+:root[data-theme='light'] .mockup-badge-text span {
+  color: #26374b;
+}
+
+/* Text sitting on the hero photo must stay light in both themes */
+:root[data-theme='light'] .parallax-section .hero-title,
+:root[data-theme='light'] .parallax-section .hero-badge,
+:root[data-theme='light'] .parallax-section .hero-stat-text {
+  color: #ffffff;
+}
+
+:root[data-theme='light'] .parallax-section .hero-subtitle {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+:root[data-theme='light'] .parallax-section .hero-badge,
+:root[data-theme='light'] .parallax-section .hero-stat-item {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+:root[data-theme='light'] .text-gradient {
+  background: linear-gradient(90deg, #ffffff, #7fe6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* --- Day / night switch --- */
+.theme-toggle {
+  position: fixed;
+  top: 22px;
+  left: 22px;
+  z-index: 99;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  background: var(--color-bg-secondary);
+  border: 1px solid rgba(var(--ink), 0.18);
+  box-shadow: 0 10px 26px rgba(var(--shade), 0.35);
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.theme-toggle svg {
+  color: var(--color-accent);
+}
+
+@media print {
+  .theme-toggle { display: none !important; }
 }
 
 * {
