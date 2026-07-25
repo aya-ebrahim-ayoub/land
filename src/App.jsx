@@ -200,122 +200,6 @@ function App() {
         </div>
       </section>
 
-      {/* Features Section (Section 3) */}
-      <section className="features-section-bg" id="features-section">
-        <div className="glow-blob glow-blob-1"></div>
-        <div className="glow-blob glow-blob-2"></div>
-        <div className="container relative-content section-padding">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <motion.h2 variants={fadeUpVariant} className="section-title">
-              حلول ذكية تغطي جميع <span className="text-primary">جوانب التشغيل</span>
-            </motion.h2>
-            <motion.p variants={fadeUpVariant} className="section-subtitle">
-              أدوات متكاملة صممت خصيصاً لتلبية احتياجات الفنادق والشقق المفروشة في المملكة، لتسهيل عمليات التشغيل اليومية وزيادة الكفاءة والأرباح.
-            </motion.p>
-
-            <div className="features-grid">
-              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
-                <div className="feature-icon"><CalendarDays /></div>
-                <h3 className="feature-title">إدارة الحجوزات والتسكين</h3>
-                <p className="feature-desc">برنامج إدارة فنادق سحابي شامل لإدارة الحجوزات، التسكين، والمغادرة، ومتابعة توفر الغرف والشقق المفروشة لحظياً.</p>
-              </motion.div>
-
-              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
-                <div className="feature-icon"><Calculator /></div>
-                <h3 className="feature-title">المحاسبة والفوترة الإلكترونية</h3>
-                <p className="feature-desc">نظام مالي متكامل، متوافق كلياً مع متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA) للمرحلتين الأولى والثانية.</p>
-              </motion.div>
-
-              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
-                <div className="feature-icon"><LineChart /></div>
-                <h3 className="feature-title">تقارير وتحليلات متقدمة</h3>
-                <p className="feature-desc">أكثر من 50 تقرير تفصيلي حول نسبة الإشغال، RevPAR، والأداء المالي للفندق لمساعدتك في اتخاذ قرارات استراتيجية.</p>
-              </motion.div>
-
-              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
-                <div className="feature-icon"><Coffee /></div>
-                <h3 className="feature-title">إدارة العمليات والصيانة</h3>
-                <p className="feature-desc">تحكم في كل تفاصيل عقارك، من إضافة الغرف، وخدمات الغرف والمغسلة بنظام POS متصل بالفاتورة الموحدة للنزيل.</p>
-              </motion.div>
-
-              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
-                <div className="feature-icon"><Users /></div>
-                <h3 className="feature-title">تجربة ضيف أفضل (CRM)</h3>
-                <p className="feature-desc">نظام CRM متطور يحفظ سجلات النزلاء التاريخية وتفضيلاتهم لتحسين تجربة الإقامة وزيادة ولاء العملاء لمنشأتك.</p>
-              </motion.div>
-
-              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
-                <div className="feature-icon"><Smartphone /></div>
-                <h3 className="feature-title">نقاط البيع (POS)</h3>
-                <p className="feature-desc">إدارة شاملة لخدمات المطاعم والمقاهي مع ربط فوري بنظام إدارة الفندق (PMS) لإصدار فاتورة إلكترونية موحدة للنزيل.</p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* System Pages Section */}
-      <SystemPages />
-
-      {/* Integrations Section */}
-      <section className="features-section-bg" id="integrations-section">
-        <div className="container relative-content section-padding stats-section">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center"
-          >
-            <motion.h2 variants={fadeUpVariant} className="section-title">
-              تكامل تام مع <span className="text-primary">الأنظمة الحكومية</span>
-            </motion.h2>
-            <motion.p variants={fadeUpVariant} className="section-subtitle">
-              نحن نضمن لك راحة البال من خلال التكامل التقني الكامل في المملكة العربية السعودية. لا داعي للقلق بشأن الامتثال أو نقل البيانات يدويًا.
-            </motion.p>
-            
-            <div className="timeline-container">
-              <div className="timeline-line"></div>
-              
-              <motion.div variants={fadeUpVariant} className="timeline-item content-right zatca-item">
-                <div className="timeline-icon">
-                  <img src="/fatoora-mark.png" alt="فاتورة Fatoora" />
-                </div>
-                <div className="timeline-content">
-                  <h4>الفاتورة الإلكترونية (ZATCA)</h4>
-                  <p>نظام مفوتر معتمد من هيئة الزكاة والضريبة والجمارك (المرحلة الأولى والثانية) مع رمز QR مشفر لضمان الامتثال التام.</p>
-                </div>
-              </motion.div>
-              
-              <motion.div variants={fadeUpVariant} className="timeline-item content-left shmous-item">
-                <div className="timeline-icon">
-                  <img src="/shmous-logo.png" alt="Shmous" />
-                </div>
-                <div className="timeline-content">
-                  <h4>منصة شموس الأمنية</h4>
-                  <p>نظام متوافق مع شموس للربط التقني المباشر مع وزارة الداخلية لإرسال بيانات النزلاء لحظة التسكين والمغادرة آلياً دون تدخل بشري.</p>
-                </div>
-              </motion.div>
-              
-              <motion.div variants={fadeUpVariant} className="timeline-item content-right ntmp-item">
-                <div className="timeline-icon">
-                  <img src="/ntmp-logo.png" alt="NTMP" />
-                </div>
-                <div className="timeline-content">
-                  <h4>الرصد السياحي (NTMP)</h4>
-                  <p>امتثال كامل لمتطلبات وزارة السياحة السعودية ونقل بيانات الإشغال والأسعار لمنصة الرصد السياحي آلياً لضمان تجنب أي مخالفات.</p>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Profile & Plan Section */}
       <section className="features-section-bg" id="profile-plan">
         <div className="glow-blob glow-blob-1"></div>
@@ -549,6 +433,124 @@ function App() {
           </motion.div>
         </div>
       </section>
+
+      {/* Features Section (Section 3) */}
+      <section className="features-section-bg" id="features-section">
+        <div className="glow-blob glow-blob-1"></div>
+        <div className="glow-blob glow-blob-2"></div>
+        <div className="container relative-content section-padding">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.h2 variants={fadeUpVariant} className="section-title">
+              حلول ذكية تغطي جميع <span className="text-primary">جوانب التشغيل</span>
+            </motion.h2>
+            <motion.p variants={fadeUpVariant} className="section-subtitle">
+              أدوات متكاملة صممت خصيصاً لتلبية احتياجات الفنادق والشقق المفروشة في المملكة، لتسهيل عمليات التشغيل اليومية وزيادة الكفاءة والأرباح.
+            </motion.p>
+
+            <div className="features-grid">
+              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
+                <div className="feature-icon"><CalendarDays /></div>
+                <h3 className="feature-title">إدارة الحجوزات والتسكين</h3>
+                <p className="feature-desc">برنامج إدارة فنادق سحابي شامل لإدارة الحجوزات، التسكين، والمغادرة، ومتابعة توفر الغرف والشقق المفروشة لحظياً.</p>
+              </motion.div>
+
+              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
+                <div className="feature-icon"><Calculator /></div>
+                <h3 className="feature-title">المحاسبة والفوترة الإلكترونية</h3>
+                <p className="feature-desc">نظام مالي متكامل، متوافق كلياً مع متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA) للمرحلتين الأولى والثانية.</p>
+              </motion.div>
+
+              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
+                <div className="feature-icon"><LineChart /></div>
+                <h3 className="feature-title">تقارير وتحليلات متقدمة</h3>
+                <p className="feature-desc">أكثر من 50 تقرير تفصيلي حول نسبة الإشغال، RevPAR، والأداء المالي للفندق لمساعدتك في اتخاذ قرارات استراتيجية.</p>
+              </motion.div>
+
+              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
+                <div className="feature-icon"><Coffee /></div>
+                <h3 className="feature-title">إدارة العمليات والصيانة</h3>
+                <p className="feature-desc">تحكم في كل تفاصيل عقارك، من إضافة الغرف، وخدمات الغرف والمغسلة بنظام POS متصل بالفاتورة الموحدة للنزيل.</p>
+              </motion.div>
+
+              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
+                <div className="feature-icon"><Users /></div>
+                <h3 className="feature-title">تجربة ضيف أفضل (CRM)</h3>
+                <p className="feature-desc">نظام CRM متطور يحفظ سجلات النزلاء التاريخية وتفضيلاتهم لتحسين تجربة الإقامة وزيادة ولاء العملاء لمنشأتك.</p>
+              </motion.div>
+
+              <motion.div variants={fadeUpVariant} className="feature-card glass-panel">
+                <div className="feature-icon"><Smartphone /></div>
+                <h3 className="feature-title">نقاط البيع (POS)</h3>
+                <p className="feature-desc">إدارة شاملة لخدمات المطاعم والمقاهي مع ربط فوري بنظام إدارة الفندق (PMS) لإصدار فاتورة إلكترونية موحدة للنزيل.</p>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* System Pages Section */}
+      <SystemPages />
+
+      {/* Integrations Section */}
+      <section className="features-section-bg" id="integrations-section">
+        <div className="container relative-content section-padding stats-section">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="text-center"
+          >
+            <motion.h2 variants={fadeUpVariant} className="section-title">
+              تكامل تام مع <span className="text-primary">الأنظمة الحكومية</span>
+            </motion.h2>
+            <motion.p variants={fadeUpVariant} className="section-subtitle">
+              نحن نضمن لك راحة البال من خلال التكامل التقني الكامل في المملكة العربية السعودية. لا داعي للقلق بشأن الامتثال أو نقل البيانات يدويًا.
+            </motion.p>
+            
+            <div className="timeline-container">
+              <div className="timeline-line"></div>
+              
+              <motion.div variants={fadeUpVariant} className="timeline-item content-right zatca-item">
+                <div className="timeline-icon">
+                  <img src="/fatoora-mark.png" alt="فاتورة Fatoora" />
+                </div>
+                <div className="timeline-content">
+                  <h4>الفاتورة الإلكترونية (ZATCA)</h4>
+                  <p>نظام مفوتر معتمد من هيئة الزكاة والضريبة والجمارك (المرحلة الأولى والثانية) مع رمز QR مشفر لضمان الامتثال التام.</p>
+                </div>
+              </motion.div>
+              
+              <motion.div variants={fadeUpVariant} className="timeline-item content-left shmous-item">
+                <div className="timeline-icon">
+                  <img src="/shmous-logo.png" alt="Shmous" />
+                </div>
+                <div className="timeline-content">
+                  <h4>منصة شموس الأمنية</h4>
+                  <p>نظام متوافق مع شموس للربط التقني المباشر مع وزارة الداخلية لإرسال بيانات النزلاء لحظة التسكين والمغادرة آلياً دون تدخل بشري.</p>
+                </div>
+              </motion.div>
+              
+              <motion.div variants={fadeUpVariant} className="timeline-item content-right ntmp-item">
+                <div className="timeline-icon">
+                  <img src="/ntmp-logo.png" alt="NTMP" />
+                </div>
+                <div className="timeline-content">
+                  <h4>الرصد السياحي (NTMP)</h4>
+                  <p>امتثال كامل لمتطلبات وزارة السياحة السعودية ونقل بيانات الإشغال والأسعار لمنصة الرصد السياحي آلياً لضمان تجنب أي مخالفات.</p>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+
 
       {/* Footer */}
       <footer className="footer relative-content">
