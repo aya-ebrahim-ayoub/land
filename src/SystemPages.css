@@ -1,0 +1,517 @@
+/* --- System Pages Section (Zig-Zag) --- */
+.system-pages-section {
+  position: relative;
+}
+
+/* --- Stats strip: one unified glass bar with divided cells --- */
+.sp-stats-strip {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 900px;
+  margin: 44px auto 0;
+  padding: 8px;
+  border-radius: 22px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.015));
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+/* Gradient stroke ring around the whole bar */
+.sp-stats-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.4),
+    rgba(30, 111, 246, 0.25) 45%,
+    rgba(0, 210, 255, 0.45)
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Ambient light sweeping across the bar */
+.sp-stats-strip::after {
+  content: '';
+  position: absolute;
+  top: -70%;
+  left: 50%;
+  width: 55%;
+  height: 240%;
+  z-index: -1;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(30, 111, 246, 0.35), transparent 65%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.sp-stat {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 22px 18px;
+  border-radius: 16px;
+  transition: background var(--transition-normal);
+}
+
+/* Thin gradient dividers between cells */
+.sp-stat + .sp-stat::before {
+  content: '';
+  position: absolute;
+  top: 22%;
+  right: 0;
+  width: 1px;
+  height: 56%;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.18), transparent);
+}
+
+.sp-stat:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sp-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  flex-shrink: 0;
+  color: var(--color-accent);
+  background: linear-gradient(145deg, rgba(30, 111, 246, 0.3), rgba(0, 210, 255, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 18px rgba(30, 111, 246, 0.28);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.sp-stat:hover .sp-stat-icon {
+  transform: scale(1.08);
+  box-shadow: 0 0 26px rgba(0, 210, 255, 0.45);
+}
+
+.sp-stat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: right;
+}
+
+.sp-stat-num {
+  font-size: 2.1rem;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(180deg, #ffffff 25%, var(--color-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sp-stat-label {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* --- Rows --- */
+.sp-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  padding-bottom: 100px;
+}
+
+.sp-row {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* Reversed rows put the screenshot on the other side */
+.sp-row.is-reversed .sp-row-text {
+  order: 2;
+}
+
+.sp-row.is-reversed .sp-row-visual {
+  order: 1;
+}
+
+/* --- Text column --- */
+.sp-row-text {
+  text-align: right;
+  min-width: 0;
+}
+
+/* Sits inline beside the page title */
+.sp-row-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(30, 111, 246, 0.28);
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(30, 111, 246, 0.35);
+}
+
+.sp-row-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.3;
+  margin: 0 0 6px;
+}
+
+.sp-row-tagline {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 16px;
+}
+
+.sp-row-desc {
+  font-size: 1.08rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 22px;
+}
+
+.sp-row-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sp-row-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  background: linear-gradient(to left, rgba(30, 111, 246, 0.07), rgba(255, 255, 255, 0.015));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: 3px solid rgba(30, 111, 246, 0.4);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1rem;
+  line-height: 1.6;
+  transition: all var(--transition-fast);
+}
+
+.sp-row-list li:hover {
+  border-right-color: var(--color-primary);
+  background: linear-gradient(to left, rgba(30, 111, 246, 0.16), rgba(255, 255, 255, 0.03));
+  transform: translateX(-6px);
+}
+
+.sp-check {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* --- Visual column (browser mockup) --- */
+.sp-row-visual {
+  min-width: 0;
+  position: relative;
+}
+
+.sp-row-visual::after {
+  content: '';
+  position: absolute;
+  inset: 12% 8%;
+  background: var(--color-primary);
+  filter: blur(70px);
+  opacity: 0.18;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.sp-browser {
+  position: relative;
+  z-index: 1;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #0a1220;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.sp-row-visual:hover .sp-browser {
+  transform: translateY(-6px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.65);
+}
+
+/* Secondary screenshot floating over the main one */
+.sp-browser-float {
+  position: absolute;
+  z-index: 3;
+  bottom: -46px;
+  left: -34px;
+  width: 58%;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  transition: transform var(--transition-normal);
+}
+
+.sp-row.is-reversed .sp-browser-float {
+  left: auto;
+  right: -34px;
+}
+
+.sp-row-visual:hover .sp-browser-float {
+  transform: translateY(-10px);
+}
+
+.sp-browser-float .sp-browser-bar {
+  padding: 7px 10px;
+}
+
+.sp-browser-float .sp-dot {
+  width: 8px;
+  height: 8px;
+}
+
+.sp-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  direction: ltr;
+}
+
+.sp-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sp-dot-red { background: #ff5f57; }
+.sp-dot-yellow { background: #febc2e; }
+.sp-dot-green { background: #28c840; }
+
+.sp-url {
+  flex: 1;
+  margin-left: 8px;
+  padding: 5px 14px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  letter-spacing: 0.4px;
+}
+
+.sp-browser-body {
+  background: #f4fbfd;
+  line-height: 0;
+}
+
+.sp-shot {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sp-shot-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  aspect-ratio: 16 / 9;
+  background: #0a1220;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.6;
+}
+
+.sp-shot-placeholder span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sp-shot-placeholder small {
+  font-size: 0.8rem;
+  direction: ltr;
+  opacity: 0.6;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+  .sp-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 560px;
+  }
+
+  /* 2 columns: no divider at the start of each row */
+  .sp-stat:nth-child(odd)::before {
+    display: none;
+  }
+
+  .sp-rows {
+    gap: 70px;
+  }
+
+  .sp-row,
+  .sp-row.is-reversed {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .sp-row .sp-row-text,
+  .sp-row.is-reversed .sp-row-text {
+    order: 1;
+  }
+
+  .sp-row .sp-row-visual,
+  .sp-row.is-reversed .sp-row-visual {
+    order: 2;
+  }
+
+  .sp-row-title {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .sp-stats-strip {
+    grid-template-columns: 1fr;
+  }
+
+  /* Single column: dividers become horizontal */
+  .sp-stat + .sp-stat::before {
+    top: 0;
+    right: 15%;
+    width: 70%;
+    height: 1px;
+    background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.18), transparent);
+  }
+
+  .sp-stat {
+    justify-content: flex-start;
+    padding: 16px 20px;
+  }
+
+  .sp-stat-num {
+    font-size: 1.7rem;
+  }
+
+  .sp-row-title {
+    font-size: 1.5rem;
+  }
+
+  .sp-row-desc,
+  .sp-row-list li {
+    font-size: 0.95rem;
+  }
+
+  .sp-browser-float {
+    width: 66%;
+    bottom: -22px;
+    left: -10px;
+  }
+
+  .sp-row.is-reversed .sp-browser-float {
+    right: -10px;
+  }
+}
+
+/* --- Print / PDF export --- */
+@media print {
+  .system-pages-section {
+    break-inside: auto;
+  }
+
+  .glow-blob,
+  .sp-row-visual::after {
+    display: none !important;
+  }
+
+  .sp-rows {
+    gap: 40px;
+    padding-bottom: 0;
+  }
+
+  /* Each page gets its own printed page */
+  .sp-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    break-after: page;
+    page-break-after: always;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .sp-row:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  /* Force a consistent order when printed */
+  .sp-row .sp-row-text,
+  .sp-row.is-reversed .sp-row-text {
+    order: 1;
+  }
+
+  .sp-row .sp-row-visual,
+  .sp-row.is-reversed .sp-row-visual {
+    order: 2;
+  }
+
+  .sp-row-list li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    transform: none !important;
+  }
+
+  .sp-browser {
+    transform: none !important;
+    box-shadow: none;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  /* Stack the floating shot normally so it never overlaps in the PDF */
+  .sp-browser-float,
+  .sp-row.is-reversed .sp-browser-float {
+    position: static;
+    width: 100%;
+    margin-top: 14px;
+    left: auto;
+    right: auto;
+  }
+
+  .sp-row-title {
+    font-size: 1.6rem;
+  }
+
+  .sp-row-desc,
+  .sp-row-list li {
+    font-size: 0.95rem;
+  }
+}

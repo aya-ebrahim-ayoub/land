@@ -148,3 +148,30 @@ ul {
 .animate-fade-in {
   animation: fadeIn 0.8s ease forwards;
 }
+
+/* --- Print / PDF export (global) --- */
+@media print {
+  /* Keep the dark theme colors when exporting to PDF */
+  html, body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background: var(--color-bg-primary) !important;
+  }
+
+  /* Reveal every scroll-triggered (framer-motion) element:
+     inline opacity/transform would otherwise hide un-scrolled content. */
+  * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  section {
+    break-inside: auto;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+}
